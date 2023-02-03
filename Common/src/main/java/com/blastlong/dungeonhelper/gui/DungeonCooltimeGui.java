@@ -1,7 +1,6 @@
 package com.blastlong.dungeonhelper.gui;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
-import com.blastlong.dungeonhelper.util.TextUtil;
 import com.blastlong.dungeonhelper.util.Timer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -119,7 +118,7 @@ public class DungeonCooltimeGui extends GuiComponent {
             poseStack.translate(x + 16 + 2, y + 4 + (16 + 2) * id, 0);
             poseStack.scale(1f/1.1f, 1f/1.1f, 1f/1.1f);
 
-            drawString(poseStack, font, TextUtil.TextComponent(String.format("%d:%d", minute, second)), 0, 0, 0xFFFFFF);
+            drawString(poseStack, font, Component.literal(String.format("%d:%d", minute, second)), 0, 0, 0xFFFFFF);
 
             poseStack.scale(1.1f, 1.1f, 1.1f);
             poseStack.popPose();

@@ -1,7 +1,6 @@
 package com.blastlong.dungeonhelper.gui;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
-import com.blastlong.dungeonhelper.util.TextUtil;
 import com.blastlong.dungeonhelper.util.Timer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -46,9 +45,9 @@ public class TutelaryGui extends GuiComponent {
                         for (Component sibling : message.getSiblings()) {
                             newcomp.append(sibling);
                         }
-                        newcomp.append(TextUtil.TextComponent(" "));
+                        newcomp.append(Component.literal(" "));
                         mc.gui.setTitle(newcomp);
-                        mc.player.displayClientMessage(TextUtil.TextComponent(" "), true);
+                        mc.player.displayClientMessage(Component.literal(" "), true);
                     }
 
                     if (client.data.toggleTutelarSound && mc.player != null) {

@@ -1,7 +1,6 @@
 package com.blastlong.dungeonhelper.gui.screen;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
-import com.blastlong.dungeonhelper.util.TextUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
@@ -26,7 +25,7 @@ public class TutelarySettingsScreen extends Screen {
     private final int height;
 
     public TutelarySettingsScreen() {
-        super(TextUtil.TextComponent("TutelarySettingScreen"));
+        super(Component.literal("TutelarySettingScreen"));
 
         mc = Minecraft.getInstance();
         client = DungeonHelperClient.getInstance();

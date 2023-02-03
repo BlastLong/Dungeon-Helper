@@ -1,6 +1,5 @@
 package com.blastlong.dungeonhelper.gui.screen;
 
-import com.blastlong.dungeonhelper.util.TextUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -19,7 +18,7 @@ public class SettingsScreen extends Screen {
     private final int height;
 
     public SettingsScreen() {
-        super(TextUtil.TextComponent("DungeonHelperSettingScreen"));
+        super(Component.literal("DungeonHelperSettingScreen"));
 
         mc = Minecraft.getInstance();
 

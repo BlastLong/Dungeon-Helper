@@ -1,7 +1,6 @@
 package com.blastlong.dungeonhelper.gui.screen;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
-import com.blastlong.dungeonhelper.util.TextUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
@@ -26,7 +25,7 @@ public class DungeonCooltimeSettingsScreen extends Screen {
     private int width, height;
 
     public DungeonCooltimeSettingsScreen() {
-        super(TextUtil.TextComponent("DungeonCooltimeSettingScreen"));
+        super(Component.literal("DungeonCooltimeSettingScreen"));
 
         mc = Minecraft.getInstance();
         client = DungeonHelperClient.getInstance();
