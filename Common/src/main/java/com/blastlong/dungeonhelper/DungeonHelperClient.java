@@ -7,7 +7,6 @@ import com.blastlong.dungeonhelper.gui.TutelaryGui;
 import com.blastlong.dungeonhelper.gui.screen.SettingsScreen;
 import com.blastlong.dungeonhelper.input.IKeyMappings;
 import com.blastlong.dungeonhelper.sound.ISoundManager;
-import com.blastlong.dungeonhelper.util.CEData;
 import com.blastlong.dungeonhelper.util.Timer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -50,7 +49,7 @@ public class DungeonHelperClient {
     }
 
     public void init() {
-        CEData.convert();
+
     }
 
     public void renderEvent(PoseStack poseStack, Component title, Component message) {
