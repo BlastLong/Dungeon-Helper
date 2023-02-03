@@ -1,0 +1,97 @@
+package com.blastlong.dungeonhelper.gui.screen;
+
+import com.blastlong.dungeonhelper.DungeonHelperClient;
+import com.blastlong.dungeonhelper.util.TextUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
+
+public class CustomEnchantRenderSetingsScreen extends Screen {
+
+    private Minecraft mc;
+    private DungeonHelperClient client;
+
+    public static final ResourceLocation BG_LOCATION = new ResourceLocation("dungeonhelper", "textures/gui/custom_enchant_render_settings_background.png");
+
+    private Button toggleCustomEnchantRenderButton;
+
+    private int width, height;
+
+    protected CustomEnchantRenderSetingsScreen() {
+        super(TextUtil.TextComponent("CustomEnchantRenderSetingsScreen"));
+
+        mc = Minecraft.getInstance();
+        client = DungeonHelperClient.getInstance();
+
+        width = 147;
+        height = 30;
+    }
+
+    protected void init() {
+        super.init();
+
+        Component toggleCustomEnchantRenderButtonComponent;
+        if (client.data.toggleCustomEnchantRender)
+            toggleCustomEnchantRenderButtonComponent = 
+                     Component.translatable("gui.dungeonhelper.custom_enchant_render_settings.main").append(
+                     Component.translatable("gui.dungeonhelper.settings.on").withStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN).withBold(true))
+            );
+        else
+            toggleCustomEnchantRenderButtonComponent = 
+                     Component.translatable("gui.dungeonhelper.custom_enchant_render_settings.main").append(
+                     Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
+            );
+
+        toggleCustomEnchantRenderButton = this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleCustomEnchantRenderButtonComponent, btn -> {
+            onToggleCustomEnchantRenderPress();
+        }));
+    }
+
+    public void render(PoseStack poseStack, int a, int b, float c) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+
+        this.renderBackground(poseStack);
+        super.render(poseStack, a, b, c);
+    }
+
+    public void renderBackground(PoseStack poseStack) {
+        super.renderBackground(poseStack);
+
+        RenderSystem.setShaderTexture(0, BG_LOCATION);
+        blit(poseStack, getRegularX(), getRegularY(), 0, 0, width, height);
+    }
+
+    private void onToggleCustomEnchantRenderPress() {
+        client.data.toggleCustomEnchantRender = !client.data.toggleCustomEnchantRender;
+
+        if(client.data.toggleCustomEnchantRender) {
+            toggleCustomEnchantRenderButton.setMessage(
+                     Component.translatable("gui.dungeonhelper.custom_enchant_render_settings.main").append(
+                     Component.translatable("gui.dungeonhelper.settings.on").withStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN).withBold(true))
+            ));
+        }
+        else {
+            toggleCustomEnchantRenderButton.setMessage(
+                     Component.translatable("gui.dungeonhelper.custom_enchant_render_settings.main").append(
+                     Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
+            ));
+        }
+
+        client.settings.save();
+    }
+
+    int getRegularX() {
+        return  mc.getWindow().getGuiScaledWidth() / 2 - width / 2;
+    }
+
+    int getRegularY() {
+        return mc.getWindow().getGuiScaledHeight() / 2 - height / 2;
+    }
+}

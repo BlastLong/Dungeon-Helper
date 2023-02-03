@@ -1,0 +1,35 @@
+package com.blastlong.dungeonhelper.sound;
+
+import com.blastlong.dungeonhelper.DungeonHelper;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+
+public class SoundManager implements ISoundManager {
+
+    public static final SoundEvent TUTELARY_SOUND = new SoundEvent(new ResourceLocation(DungeonHelper.MODID, "tutelary_sound"));
+
+    public void register() {
+        Registry.register(Registry.SOUND_EVENT, new ResourceLocation(DungeonHelper.MODID, "tutelary_sound"), TUTELARY_SOUND);
+    }
+
+    @Override
+    public void playSound(String soundName, float volume) {
+        Minecraft mc = Minecraft.getInstance();
+
+        SoundEvent sound;
+        switch (soundName) {
+            case "tutelary_sound":
+                sound = TUTELARY_SOUND;
+                break;
+
+            default:
+                return;
+        }
+
+        assert mc.player != null;
+        mc.player.getLevel().playSound(mc.player, mc.player.getX(), mc.player.getY(), mc.player.getZ(), sound, SoundSource.PLAYERS, volume, 1f);
+    }
+}

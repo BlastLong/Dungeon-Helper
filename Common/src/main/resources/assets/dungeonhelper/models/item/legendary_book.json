@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated", 
+	"textures": {
+		"layer0": "dungeonhelper:items/legendary_book"
+	}
+}

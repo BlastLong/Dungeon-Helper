@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="${loaderVersionRange}"
+license="All rights reserved"
+[[mods]]
+modId="${modId}"
+version="${version}"
+displayName="${modName}"
+logoFile="logo.png"
+authors="${modAuthor}"
+description='''
+${modDescription}
+'''
+
+[[dependencies.dungeonhelper]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forgeVersionRange}"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.dungeonhelper]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraftVersionRange}"
+    ordering="NONE"
+    side="CLIENT"

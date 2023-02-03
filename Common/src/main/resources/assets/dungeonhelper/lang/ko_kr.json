@@ -1,0 +1,29 @@
+{
+  "key.dungeonhelper.category": "던전 도우미",
+  "key.dungeonhelper.open_dungeonhelper_settings": "던전 도우미 설정 열기",
+
+  "item.dungeonhelper.common_book":"흔한 책",
+  "item.dungeonhelper.uncommon_book":"흔하지 않은 책",
+  "item.dungeonhelper.rare_book":"희귀한 책",
+  "item.dungeonhelper.epic_book":"특별한 책",
+  "item.dungeonhelper.legendary_book":"전설적인 책",
+  "item.dungeonhelper.mythic_book":"신회적인 책",
+
+  "gui.dungeonhelper.settings.tutelary_settings": "수호자 설정",
+  "gui.dungeonhelper.settings.dungeon_cooltime_settings": "던전 쿨타임 설정",
+  "gui.dungeonhelper.settings.custom_enchant_render_settings": "커스텀 인첸트 표시 설정",
+
+  "gui.dungeonhelper.settings.on": "켜기",
+  "gui.dungeonhelper.settings.off": "끄기",
+
+  "gui.dungeonhelper.tutelary_settings.main": "수호자 : ",
+  "gui.dungeonhelper.tutelary_settings.icon": "아이콘",
+  "gui.dungeonhelper.tutelary_settings.title": "중앙표시",
+  "gui.dungeonhelper.tutelary_settings.sound": "효과음",
+
+  "gui.dungeonhelper.dungeon_cooltime_settings.main": "던전 쿨타임 표시 : ",
+  "gui.dungeonhelper.dungeon_cooltime_settings.text": "글자",
+  "gui.dungeonhelper.dungeon_cooltime_settings.fade": "페이드",
+
+  "gui.dungeonhelper.custom_enchant_render_settings.main": "커인 표시 : "
+}

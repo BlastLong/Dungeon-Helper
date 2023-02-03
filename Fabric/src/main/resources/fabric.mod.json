@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "${modId}",
+  "version": "${version}",
+
+  "name": "${modName}",
+  "description": "${modDescription}",
+  "authors": [
+    "${modAuthor}"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "All rights reserved",
+  "icon": "logo.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.blastlong.dungeonhelper.DungeonHelper"
+    ]
+  },
+  "mixins": [
+    "dungeonhelper.fabric.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=${fabricLoaderVersion}",
+    "fabric-key-binding-api-v1": "*",
+    "minecraft": "${minecraftVersion}",
+    "java": ">=${modJavaVersion}"
+  }
+}

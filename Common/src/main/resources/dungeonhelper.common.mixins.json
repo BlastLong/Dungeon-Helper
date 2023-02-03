@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.blastlong.dungeonhelper.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "dungeonhelper.mixin.refmap.json",
+  "server": [
+  ],
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}

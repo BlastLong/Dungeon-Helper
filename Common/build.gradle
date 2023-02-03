@@ -1,0 +1,72 @@
+plugins {
+    id("org.spongepowered.gradle.vanilla") version "0.2.1-SNAPSHOT"
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+def baseArchivesName = "${modId}-${minecraftVersion}-common"
+base {
+    archivesName.set(baseArchivesName)
+}
+
+minecraft {
+    version(minecraftVersion)
+    // no runs are configured for Common
+}
+
+sourceSets {
+
+}
+
+dependencies {
+    compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(modJavaVersion))
+    }
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    javaToolchains {
+        compilerFor {
+            languageVersion.set(JavaLanguageVersion.of(modJavaVersion))
+        }
+    }
+}
+
+/*
+publishing {
+    publications {
+        register("commonJar", MavenPublication) {
+            artifactId = base.archivesName.get()
+            artifact(tasks.jar)
+            artifact(tasks.named("sourcesJar"))
+
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode("dependencies")
+                dependencyProjects.forEach {
+                    def dependencyNode = dependenciesNode.appendNode("dependency")
+                    dependencyNode.appendNode("groupId", it.group)
+                    dependencyNode.appendNode("artifactId", it.base.archivesName.get())
+                    dependencyNode.appendNode("version", it.version)
+                }
+            }
+        }
+    }
+    repositories {
+        def deployDir = project.findProperty("DEPLOY_DIR")
+        if (deployDir != null) {
+            maven(deployDir)
+        }
+    }
+}
+*/
