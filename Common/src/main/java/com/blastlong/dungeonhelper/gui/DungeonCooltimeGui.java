@@ -10,8 +10,6 @@ import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-import java.net.URLDecoder;
-
 public class DungeonCooltimeGui extends GuiComponent {
     private Minecraft mc;
     private DungeonHelperClient client;
@@ -27,18 +25,17 @@ public class DungeonCooltimeGui extends GuiComponent {
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_two_dungeon_icon.png")
     };
     private static final String[] DUNGEON_NAMES = {
-            "%EA%B7%B8%EB%A3%A8%ED%8A%B8%EC%9D%98+%EA%B3%A8%EC%A7%9C%EA%B8%B0",				// 그루트의 골짜기
-            "%EB%A7%9D%EB%A0%B9%EC%9D%98+%EB%AC%B4%EB%8D%A4",								// 망령의 무덤
-            "%ED%98%B9%ED%95%9C%EC%9D%98+%EC%84%B1%EC%97%AD",								// 혹한의 성역
-            "%EA%B5%B0%EB%8B%A8%EC%9E%A5%EC%9D%98+%EC%9A%94%EC%83%88",						// 군단장의 요새
-            "%EA%B3%A0%EB%B8%94%EB%A6%B0%EC%9D%98+%EC%9A%94%EC%83%88",				        // 고블린의 요새
-            "%EB%A7%9D%EC%9E%90%EC%9D%98+%EB%AC%98%EC%A7%80"		                		// 망자의 묘지
+            "그루트의 골짜기",
+            "망령의 무덤",
+            "혹한의 성역",
+            "군단장의 요새",
+            "고블린의 요새",
+            "망자의 묘지"
     };
 
     private static final ResourceLocation BLACK_ICON = new ResourceLocation("dungeonhelper", "textures/icon/black.png");
 
     private Component lastTitle = null;
-    private long lastTutelaryTime;
 
     public DungeonCooltimeGui(){
         mc = Minecraft.getInstance();
@@ -51,7 +48,7 @@ public class DungeonCooltimeGui extends GuiComponent {
             {
                 if (title != lastTitle) {
                     for (int i = 0; i < 6; i++) {
-                        if (title.getString().contains(URLDecoder.decode(DUNGEON_NAMES[i], "UTF-8"))) {
+                        if (title.getString().contains(DUNGEON_NAMES[i])) {
                             client.data.lastDungeonTime[i] = timer.getCurrentTime();
                             client.settings.save();
                             break;
