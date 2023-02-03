@@ -23,21 +23,17 @@ public class SettingsScreen extends Screen {
         mc = Minecraft.getInstance();
 
         width = 147;
-        height = 74;
+        height = 52;
     }
 
     protected void init(){
         super.init();
 
-        this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5, 137, 20, Component.translatable("gui.dungeonhelper.settings.tutelary_settings"), btn -> {
-            onTutelarySettingsPress();
-        }));
-
-        this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 137, 20, Component.translatable("gui.dungeonhelper.settings.dungeon_cooltime_settings"), btn -> {
+        this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5, 137, 20, Component.translatable("gui.dungeonhelper.settings.dungeon_cooltime_settings"), btn -> {
             onDungeonCooltimeSettingsPress();
         }));
 
-        this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5 + (20 + 2) * 2, 137, 20, Component.translatable("gui.dungeonhelper.settings.custom_enchant_render_settings"), btn -> {
+        this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 137, 20, Component.translatable("gui.dungeonhelper.settings.custom_enchant_render_settings"), btn -> {
             onCustomEnchantRenderSettingsPress();
         }));
     }
@@ -55,10 +51,6 @@ public class SettingsScreen extends Screen {
 
         RenderSystem.setShaderTexture(0, BACKGROUND_LOCATION);
         blit(poseStack, getRegularX(), getRegularY(), 0, 0, width, height);
-    }
-
-    private void onTutelarySettingsPress() {
-        mc.setScreen(new TutelarySettingsScreen());
     }
 
     private void onDungeonCooltimeSettingsPress() {

@@ -3,7 +3,6 @@ package com.blastlong.dungeonhelper;
 import com.blastlong.dungeonhelper.file.Data;
 import com.blastlong.dungeonhelper.file.Settings;
 import com.blastlong.dungeonhelper.gui.DungeonCooltimeGui;
-import com.blastlong.dungeonhelper.gui.TutelaryGui;
 import com.blastlong.dungeonhelper.gui.screen.SettingsScreen;
 import com.blastlong.dungeonhelper.input.IKeyMappings;
 import com.blastlong.dungeonhelper.sound.ISoundManager;
@@ -23,7 +22,6 @@ public class DungeonHelperClient {
     public Settings settings;
     public Data data;
 
-    private TutelaryGui tutelaryGui;
     private DungeonCooltimeGui dungeonCooltimeGui;
 
     private SettingsScreen settingsScreen;
@@ -43,7 +41,6 @@ public class DungeonHelperClient {
             settings.save();
         }
 
-        tutelaryGui = new TutelaryGui();
         dungeonCooltimeGui = new DungeonCooltimeGui();
         settingsScreen = new SettingsScreen();
     }
@@ -53,7 +50,6 @@ public class DungeonHelperClient {
     }
 
     public void renderEvent(PoseStack poseStack, Component title, Component message) {
-        tutelaryGui.renderTick(poseStack, message, timer);
         dungeonCooltimeGui.renderTick(poseStack, title, timer);
 
         timer.updateTime();
