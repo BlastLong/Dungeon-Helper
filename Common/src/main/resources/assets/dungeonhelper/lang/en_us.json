@@ -9,17 +9,11 @@
 	"item.dungeonhelper.legendary_book":"Legendary Book",
 	"item.dungeonhelper.mythic_book":"Mythic Book",
 
-	"gui.dungeonhelper.settings.tutelary_settings": "Tutelary Settings",
 	"gui.dungeonhelper.settings.dungeon_cooltime_settings": "Dungeon Cooltime Settings",
 	"gui.dungeonhelper.settings.custom_enchant_render_settings": "Custom Enchant Render Settings",
 
 	"gui.dungeonhelper.settings.on": "ON",
 	"gui.dungeonhelper.settings.off": "OFF",
-
-	"gui.dungeonhelper.tutelary_settings.main": "Toggle Tutelary : ",
-	"gui.dungeonhelper.tutelary_settings.icon": "Icon",
-	"gui.dungeonhelper.tutelary_settings.title": "Title",
-	"gui.dungeonhelper.tutelary_settings.sound": "Sound",
 
 	"gui.dungeonhelper.dungeon_cooltime_settings.main": "Toggle Dungeon Cooltime : ",
 	"gui.dungeonhelper.dungeon_cooltime_settings.text": "Text",

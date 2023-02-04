@@ -1,8 +1,2 @@
 {
-	"tutelary_sound" : {
-		"subtitle" : "sounds.dungeonhelper.tutelary_sound",
-		"sounds" : [
-			"dungeonhelper:tutelary_sound"
-		]
-	}
 }
