@@ -36,7 +36,7 @@ public class DungeonHelperClient {
         instance = this;
         settings = new Settings();
         data = settings.load();
-        if(data == null) {
+        if(data == null || data.lastDungeonTime.length != DungeonCooltimeGui.DUNGEON_COUNT) {
             data = new Data();
             settings.save();
         }

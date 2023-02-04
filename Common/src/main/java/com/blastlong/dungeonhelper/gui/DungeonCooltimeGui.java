@@ -15,14 +15,15 @@ public class DungeonCooltimeGui extends GuiComponent {
     private DungeonHelperClient client;
     private Font font;
 
-    private static final int DUNGEON_COUNT = 6;
+    public static final int DUNGEON_COUNT = 7;
     private static final ResourceLocation[] DUNGEON_ICONS = new ResourceLocation[] {
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/one_dungeon_icon.png"),
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/two_dungeon_icon.png"),
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/three_dungeon_icon.png"),
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/four_dungeon_icon.png"),
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_one_dungeon_icon.png"),
-            new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_two_dungeon_icon.png")
+            new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_two_dungeon_icon.png"),
+            new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_three_dungeon_icon.png")
     };
     private static final String[] DUNGEON_NAMES = {
             "그루트의 골짜기",
@@ -30,7 +31,8 @@ public class DungeonCooltimeGui extends GuiComponent {
             "혹한의 성역",
             "군단장의 요새",
             "고블린의 요새",
-            "망자의 묘지"
+            "망자의 묘지",
+            "마천루 : 네온시티"
     };
 
     private static final ResourceLocation BLACK_ICON = new ResourceLocation("dungeonhelper", "textures/icon/black.png");
@@ -47,7 +49,7 @@ public class DungeonCooltimeGui extends GuiComponent {
             try
             {
                 if (title != lastTitle) {
-                    for (int i = 0; i < 6; i++) {
+                    for (int i = 0; i < DUNGEON_COUNT; i++) {
                         if (title.getString().contains(DUNGEON_NAMES[i])) {
                             client.data.lastDungeonTime[i] = timer.getCurrentTime();
                             client.settings.save();
@@ -63,8 +65,8 @@ public class DungeonCooltimeGui extends GuiComponent {
             lastTitle = title;
         }
 
-        int[] seconds = new int[6];
-        for(int i = 0; i < 6; i++) {
+        int[] seconds = new int[DUNGEON_COUNT];
+        for(int i = 0; i < seconds.length; i++) {
             seconds[i] = 3600 - (int) timer.getDifference(client.data.lastDungeonTime[i]);
             if(seconds[i] < 0)
                 seconds[i] = 0;
@@ -77,12 +79,12 @@ public class DungeonCooltimeGui extends GuiComponent {
     private void render(PoseStack poseStack, int[] seconds) {
         int x = 2, y = 2;
 
-        for(int i = 0; i < 6; i++) {
-            renderCooltime(i, poseStack, x, y, seconds[i]);
+        for(int i = 0; i < DUNGEON_COUNT; i++) {
+            renderDungeonsAndCooltime(i, poseStack, x, y, seconds[i]);
         }
     }
 
-    private void renderCooltime(int id, PoseStack poseStack, int x, int y, int second) {
+    private void renderDungeonsAndCooltime(int id, PoseStack poseStack, int x, int y, int second) {
         poseStack.pushPose();
         poseStack.translate(x, y + (16 + 2) * id, 0);
         poseStack.scale(16f/256f, 16f/256f, 16f/256f);
