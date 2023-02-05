@@ -30,6 +30,7 @@ subprojects {
                      "loaderVersionRange" : loaderVersionRange,
                      "minecraftVersion" : minecraftVersion,
                      "minecraftVersionRange" : minecraftVersionRange,
+                     "fabricMinecraftVersion" : fabricMinecraftVersion,
                      "modAuthor" : modAuthor,
                      "modDescription" : modDescription,
                      "modId" : modId,
