@@ -37,6 +37,10 @@ loom {
     }
 }
 
+loom.mixin {
+    defaultRefmapName = "dungeonhelper.mixin.refmap.json"
+}
+
 processResources {
     from project(":Common").sourceSets.main.resources
 }
