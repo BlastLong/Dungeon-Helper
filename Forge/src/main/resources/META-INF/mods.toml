@@ -10,6 +10,7 @@ authors="${modAuthor}"
 description='''
 ${modDescription}
 '''
+credits="${modCredits}"
 
 [[dependencies.dungeonhelper]]
     modId="forge"

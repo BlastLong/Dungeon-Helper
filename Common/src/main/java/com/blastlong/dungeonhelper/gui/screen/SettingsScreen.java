@@ -23,7 +23,7 @@ public class SettingsScreen extends Screen {
         mc = Minecraft.getInstance();
 
         width = 147;
-        height = 52;
+        height = 74;
     }
 
     protected void init(){
@@ -35,6 +35,10 @@ public class SettingsScreen extends Screen {
 
         this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 137, 20, Component.translatable("gui.dungeonhelper.settings.custom_enchant_render_settings"), btn -> {
             onCustomEnchantRenderSettingsPress();
+        }));
+
+        this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5 + (20 + 2) * 2, 137, 20, Component.translatable("gui.dungeonhelper.settings.skill_cooltime_settings"), btn -> {
+            onSkillCooltimeSettingsPress();
         }));
     }
 
@@ -59,6 +63,10 @@ public class SettingsScreen extends Screen {
 
     private void onCustomEnchantRenderSettingsPress() {
         mc.setScreen(new CustomEnchantRenderSetingsScreen());
+    }
+
+    private void onSkillCooltimeSettingsPress() {
+        mc.setScreen(new SkillCooltimeSettingsScreen());
     }
 
     int getRegularX() {
