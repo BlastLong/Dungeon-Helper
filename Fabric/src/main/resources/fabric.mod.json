@@ -8,6 +8,9 @@
   "authors": [
     "${modAuthor}"
   ],
+  "credits": [
+    "${modCredits}"
+  ],
   "contact": {
     "homepage": "",
     "sources": ""
@@ -23,6 +26,7 @@
     ]
   },
   "mixins": [
+    "dungeonhelper.common.mixins.json",
     "dungeonhelper.fabric.mixins.json"
   ],
 

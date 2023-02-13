@@ -3,6 +3,7 @@ package com.blastlong.dungeonhelper;
 import com.blastlong.dungeonhelper.file.Data;
 import com.blastlong.dungeonhelper.file.Settings;
 import com.blastlong.dungeonhelper.gui.DungeonCooltimeGui;
+import com.blastlong.dungeonhelper.gui.SkillCooltimeGui;
 import com.blastlong.dungeonhelper.gui.screen.SettingsScreen;
 import com.blastlong.dungeonhelper.input.IKeyMappings;
 import com.blastlong.dungeonhelper.sound.ISoundManager;
@@ -23,6 +24,7 @@ public class DungeonHelperClient {
     public Data data;
 
     private DungeonCooltimeGui dungeonCooltimeGui;
+    private SkillCooltimeGui skillCooltimeGui;
 
     private SettingsScreen settingsScreen;
 
@@ -33,6 +35,7 @@ public class DungeonHelperClient {
         this.keyMappings = keyMappings;
 
         mc = Minecraft.getInstance();
+
         instance = this;
         settings = new Settings();
         data = settings.load();
@@ -42,6 +45,7 @@ public class DungeonHelperClient {
         }
 
         dungeonCooltimeGui = new DungeonCooltimeGui();
+        skillCooltimeGui = new SkillCooltimeGui();
         settingsScreen = new SettingsScreen();
     }
 
@@ -51,8 +55,17 @@ public class DungeonHelperClient {
 
     public void renderEvent(PoseStack poseStack, Component title, Component message) {
         dungeonCooltimeGui.renderTick(poseStack, title, timer);
+        skillCooltimeGui.renderTick(poseStack, timer);
 
         timer.updateTime();
+    }
+
+    public void updateLastDashTime() {
+        skillCooltimeGui.updateLastDashTime(timer);
+    }
+
+    public void updateLastUltimateTime() {
+        skillCooltimeGui.updateLastUltimateTime(timer);
     }
 
     public SettingsScreen getSettingsScreen() {

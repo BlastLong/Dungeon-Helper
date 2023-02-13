@@ -8,6 +8,7 @@
   "mixins": [
   ],
   "client": [
+    "ClientPacketListenerMixin"
   ],
   "minVersion": "0.8"
 }

@@ -11,6 +11,7 @@
 
 	"gui.dungeonhelper.settings.dungeon_cooltime_settings": "Dungeon Cooltime Settings",
 	"gui.dungeonhelper.settings.custom_enchant_render_settings": "Custom Enchant Render Settings",
+	"gui.dungeonhelper.settings.skill_cooltime_settings": "Skill Cooltime Settings",
 
 	"gui.dungeonhelper.settings.on": "ON",
 	"gui.dungeonhelper.settings.off": "OFF",
@@ -19,5 +20,10 @@
 	"gui.dungeonhelper.dungeon_cooltime_settings.text": "Text",
 	"gui.dungeonhelper.dungeon_cooltime_settings.fade": "Fade",
 
-	"gui.dungeonhelper.custom_enchant_render_settings.main": "Toggle CE Render : "
+	"gui.dungeonhelper.custom_enchant_render_settings.main": "Toggle CE Render : ",
+
+	"gui.dungeonhelper.skill_cooltime_settings.main": "Toggle Skill Cooltime : ",
+	"gui.dungeonhelper.skill_cooltime_settings.classType": "Class : ",
+	"gui.dungeonhelper.skill_cooltime_settings.classType.assassin": "Assassin",
+	"gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior": "Dragon Warrior"
 }
