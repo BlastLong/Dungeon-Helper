@@ -33,6 +33,7 @@ subprojects {
                      "fabricMinecraftVersion" : fabricMinecraftVersion,
                      "modAuthor" : modAuthor,
                      "modDescription" : modDescription,
+                     "modCredits" : modCredits,
                      "modId" : modId,
                      "modJavaVersion" : modJavaVersion,
                      "modName" : modName,

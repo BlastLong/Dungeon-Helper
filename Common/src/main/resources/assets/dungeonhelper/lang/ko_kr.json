@@ -11,6 +11,7 @@
 
   "gui.dungeonhelper.settings.dungeon_cooltime_settings": "던전 쿨타임 설정",
   "gui.dungeonhelper.settings.custom_enchant_render_settings": "커스텀 인첸트 표시 설정",
+  "gui.dungeonhelper.settings.skill_cooltime_settings": "스킬 쿨타임 설정",
 
   "gui.dungeonhelper.settings.on": "켜기",
   "gui.dungeonhelper.settings.off": "끄기",
@@ -19,5 +20,10 @@
   "gui.dungeonhelper.dungeon_cooltime_settings.text": "글자",
   "gui.dungeonhelper.dungeon_cooltime_settings.fade": "페이드",
 
-  "gui.dungeonhelper.custom_enchant_render_settings.main": "커인 표시 : "
+  "gui.dungeonhelper.custom_enchant_render_settings.main": "커인 표시 : ",
+
+  "gui.dungeonhelper.skill_cooltime_settings.main": "스킬 쿨타임 표시 : ",
+  "gui.dungeonhelper.skill_cooltime_settings.classType": "클래스 : ",
+  "gui.dungeonhelper.skill_cooltime_settings.classType.assassin": "어쌔신",
+  "gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior": "드래곤 워리어"
 }
