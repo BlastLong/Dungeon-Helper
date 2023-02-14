@@ -3,16 +3,17 @@ package com.blastlong.dungeonhelper.sound;
 import com.blastlong.dungeonhelper.DungeonHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 
 public class SoundManager implements ISoundManager {
 
-    public static final SoundEvent TUTELARY_SOUND = new SoundEvent(new ResourceLocation(DungeonHelper.MODID, "tutelary_sound"));
+    public static final SoundEvent TUTELARY_SOUND = SoundEvent.createVariableRangeEvent(new ResourceLocation(DungeonHelper.MODID, "tutelary_sound"));
 
     public void register() {
-        Registry.register(Registry.SOUND_EVENT, new ResourceLocation(DungeonHelper.MODID, "tutelary_sound"), TUTELARY_SOUND);
+        Registry.register(BuiltInRegistries.SOUND_EVENT, new ResourceLocation(DungeonHelper.MODID, "tutelary_sound"), TUTELARY_SOUND);
     }
 
     @Override
