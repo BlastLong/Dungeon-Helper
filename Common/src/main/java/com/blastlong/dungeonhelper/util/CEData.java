@@ -1,6 +1,8 @@
 package com.blastlong.dungeonhelper.util;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -75,7 +77,9 @@ public class CEData {
        if(!DungeonHelperClient.getInstance().data.toggleCustomEnchantRender)
            return null;
 
-       if(Item.getId(itemStack.getItem()) != 829)
+       // 1.19 : 829
+       // 1.19.3 : 857
+       if(Item.getId(itemStack.getItem()) != 857)
            return null;
 
        for(String s : COMMON_ENCHANT_NAMES) {
