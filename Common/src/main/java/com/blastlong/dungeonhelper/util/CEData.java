@@ -75,7 +75,7 @@ public class CEData {
        if(!DungeonHelperClient.getInstance().data.toggleCustomEnchantRender)
            return null;
 
-       if(Item.getId(itemStack.getItem()) != 829)
+       if(!itemStack.getItem().toString().equals("paper"))
            return null;
 
        for(String s : COMMON_ENCHANT_NAMES) {
