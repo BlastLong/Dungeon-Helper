@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.PlainTextButton;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -50,9 +51,9 @@ public class DungeonCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             );
 
-        toggleDungeonCooltimeButton = (Button)this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleDungeonCooltimeButtonComponent, (button) -> {
+        toggleDungeonCooltimeButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleDungeonCooltimeButtonComponent, btn -> {
             onToggleDungeonCooltimePress();
-        }));
+        }, mc.font));
 
         // Text
         Component toggleDungeonCooltimeTextButtonComponent;
@@ -65,9 +66,9 @@ public class DungeonCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.text").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             ;
 
-        toggleDungeonCooltimeOptionButtons[0] = (Button)this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 67, 20, toggleDungeonCooltimeTextButtonComponent, btn -> {
+        toggleDungeonCooltimeOptionButtons[0] = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 67, 20, toggleDungeonCooltimeTextButtonComponent, btn -> {
             onToggleDungeonCooltimeOptionPress(0);
-        }));
+        }, mc.font));
 
         // Fade
         Component toggleDungeonCooltimeFadeButtonComponent;
@@ -80,9 +81,9 @@ public class DungeonCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.fade").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             ;
 
-        toggleDungeonCooltimeOptionButtons[1] = (Button)this.addRenderableWidget(new Button(getRegularX() + 5 + 67 + 2, getRegularY() + 5 + 20 + 2, 68, 20, toggleDungeonCooltimeFadeButtonComponent, btn -> {
+        toggleDungeonCooltimeOptionButtons[1] = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5 + 67 + 2, getRegularY() + 5 + 20 + 2, 68, 20, toggleDungeonCooltimeFadeButtonComponent, btn -> {
             onToggleDungeonCooltimeOptionPress(1);
-        }));
+        }, mc.font));
     }
 
     public void render(PoseStack poseStack, int a, int b, float c) {

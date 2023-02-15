@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.PlainTextButton;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -51,9 +52,9 @@ public class SkillCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             );
 
-        toggleSkillCooltimeButton = (Button)this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleSkillCooltimeButtonComponent, (button) -> {
+        toggleSkillCooltimeButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleSkillCooltimeButtonComponent, btn -> {
             onToggleSkillCooltimePress();
-        }));
+        }, mc.font));
 
         Component classTypeButtonComponent = Component.empty();
         if(client.data.classType == ClassCategory.ASSASSIN)
@@ -67,9 +68,9 @@ public class SkillCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior").withStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE).withBold(true))
                     );
 
-        classTypeButton = (Button)this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 137, 20, classTypeButtonComponent, (button) -> {
+        classTypeButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 137, 20, classTypeButtonComponent, btn -> {
             onClassTypePress();
-        }));
+        }, mc.font));
     }
 
     public void render(PoseStack poseStack, int a, int b, float c) {

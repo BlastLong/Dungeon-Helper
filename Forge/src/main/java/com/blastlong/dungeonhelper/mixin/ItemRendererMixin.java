@@ -33,9 +33,9 @@ public class ItemRendererMixin {
         BakedModel bakedmodel;
         CustomEnchantType type;
         if (p_174265_.is(Items.TRIDENT)) {
-            bakedmodel = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("minecraft:trident_in_hand#inventory"));
+            bakedmodel = this.itemModelShaper.getModelManager().getModel(ItemRenderer.TRIDENT_IN_HAND_MODEL);
         } else if (p_174265_.is(Items.SPYGLASS)) {
-            bakedmodel = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("minecraft:spyglass_in_hand#inventory"));
+            bakedmodel = this.itemModelShaper.getModelManager().getModel(ItemRenderer.SPYGLASS_IN_HAND_MODEL);
         } else if ((type = CEData.getType(p_174265_)) != null) {
             // Minecraft.getInstance().player.displayClientMessage(Component.literal("ITEM CODE: " + Item.getId(p_174265_.getItem())), false);
             switch(type) {

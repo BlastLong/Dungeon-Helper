@@ -1,6 +1,8 @@
 package com.blastlong.dungeonhelper.util;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
