@@ -5,7 +5,7 @@ import com.blastlong.dungeonhelper.DungeonHelperClient;
 import java.io.*;
 
 public class Settings {
-    private static final String DATA_DIRECTORY_PATH = "\\Dungeon Helper - Forge";
+    private static final String DATA_DIRECTORY_PATH = "\\Dungeon Helper";
     private static final String DATA_FILE_PATH = DATA_DIRECTORY_PATH + "\\setting.data";
 
     public void save() {

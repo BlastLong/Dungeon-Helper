@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.PlainTextButton;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -48,9 +49,9 @@ public class CustomEnchantRenderSetingsScreen extends Screen {
                      Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             );
 
-        toggleCustomEnchantRenderButton = this.addRenderableWidget(new Button(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleCustomEnchantRenderButtonComponent, btn -> {
+        toggleCustomEnchantRenderButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleCustomEnchantRenderButtonComponent, btn -> {
             onToggleCustomEnchantRenderPress();
-        }));
+        }, mc.font));
     }
 
     public void render(PoseStack poseStack, int a, int b, float c) {

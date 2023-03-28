@@ -33,9 +33,9 @@ public class ItemRendererMixin {
         BakedModel bakedModel;
         CustomEnchantType type;
         if (stack.is(Items.TRIDENT)) {
-            bakedModel = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("minecraft:trident_in_hand#inventory"));
+            bakedModel = this.itemModelShaper.getModelManager().getModel(ItemRenderer.TRIDENT_IN_HAND_MODEL);
         } else if (stack.is(Items.SPYGLASS)) {
-            bakedModel = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("minecraft:spyglass_in_hand#inventory"));
+            bakedModel = this.itemModelShaper.getModelManager().getModel(ItemRenderer.SPYGLASS_IN_HAND_MODEL);
         } else if ((type = CEData.getType(stack)) != null) {
             switch(type) {
                 case COMMON -> bakedModel = this.itemModelShaper.getItemModel(new ItemStack(DungeonItems.COMMON_BOOK, stack.getCount()));

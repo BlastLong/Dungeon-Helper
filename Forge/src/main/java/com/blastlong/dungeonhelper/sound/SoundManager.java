@@ -15,7 +15,7 @@ public class SoundManager implements ISoundManager {
     public static final RegistryObject<SoundEvent> TUTELARY_SOUND = registerSoundEvent("tutelary_sound");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
-        return DUNGEON_HELPER_SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(DungeonHelper.MODID, name)));
+        return DUNGEON_HELPER_SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DungeonHelper.MODID, name)));
     }
 
     @Override

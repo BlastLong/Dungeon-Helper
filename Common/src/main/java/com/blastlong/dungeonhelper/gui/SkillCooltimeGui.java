@@ -25,7 +25,7 @@ public class SkillCooltimeGui extends GuiComponent {
     private static final int SKILL_GUI_SIZE = 16;
 
     private static final int BLADE_DASH_COOLTIME = 3;
-    private static final float BLADE_DANCE_COOLTIME = 28f;
+    private static final float BLADE_DANCE_COOLTIME = 30f;
     private static final int DRAGON_DASH_COOLTIME = 4;
     private static final float DRAGON_SMASH_COOLTIME = 27.5f;
 
