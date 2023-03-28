@@ -15,7 +15,7 @@ public class DungeonCooltimeGui extends GuiComponent {
     private DungeonHelperClient client;
     private Font font;
 
-    public static final int DUNGEON_COUNT = 7;
+    public static final int DUNGEON_COUNT = 8;
     private static final ResourceLocation[] DUNGEON_ICONS = new ResourceLocation[] {
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/one_dungeon_icon.png"),
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/two_dungeon_icon.png"),
@@ -23,7 +23,8 @@ public class DungeonCooltimeGui extends GuiComponent {
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/four_dungeon_icon.png"),
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_one_dungeon_icon.png"),
             new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_two_dungeon_icon.png"),
-            new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_three_dungeon_icon.png")
+            new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_three_dungeon_icon.png"),
+            new ResourceLocation("dungeonhelper", "textures/icon/dungeon/n_four_dungeon_icon.png")
     };
     private static final String[] DUNGEON_NAMES = {
             "그루트의 골짜기",
@@ -32,7 +33,8 @@ public class DungeonCooltimeGui extends GuiComponent {
             "군단장의 요새",
             "망자의 묘지",
             "고블린의 요새",
-            "마천루 : 네온시티"
+            "마천루 : 네온시티",
+            "헤럴드의 성채"
     };
 
     private static final ResourceLocation BLACK_ICON = new ResourceLocation("dungeonhelper", "textures/icon/black.png");
