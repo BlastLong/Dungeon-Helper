@@ -30,8 +30,8 @@ public class DungeonCooltimeGui extends GuiComponent {
             "망령의 무덤",
             "혹한의 성역",
             "군단장의 요새",
-            "고블린의 요새",
             "망자의 묘지",
+            "고블린의 요새",
             "마천루 : 네온시티"
     };
 
