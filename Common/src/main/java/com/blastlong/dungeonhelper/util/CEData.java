@@ -13,7 +13,7 @@ public class CEData {
             "치명타",
             "헤드샷",
             "불굴",
-            "제련"
+            "재련"
     };
 
     private static String[] UNCOMMON_ENCHANT_NAMES = {
@@ -47,7 +47,7 @@ public class CEData {
             "용장",
             "흡혈",
             "광맥",
-            "바다의가호",
+            "바다의 가호",
             "방화"
     };
 
