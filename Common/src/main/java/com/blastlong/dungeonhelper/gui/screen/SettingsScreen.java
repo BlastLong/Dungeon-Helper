@@ -30,17 +30,20 @@ public class SettingsScreen extends Screen {
     protected void init(){
         super.init();
 
-        this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5, 137, 20, Component.translatable("gui.dungeonhelper.settings.dungeon_cooltime_settings"), btn -> {
-            onDungeonCooltimeSettingsPress();
-        }, mc.font));
+        this.addRenderableWidget(new Button.Builder(Component.translatable("gui.dungeonhelper.settings.dungeon_cooltime_settings"), btn -> onDungeonCooltimeSettingsPress())
+                .pos(getRegularX() + 5, getRegularY() + 5)
+                .size(137, 20)
+                .build());
 
-        this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 137, 20, Component.translatable("gui.dungeonhelper.settings.custom_enchant_render_settings"), btn -> {
-            onCustomEnchantRenderSettingsPress();
-        }, mc.font));
+        this.addRenderableWidget(new Button.Builder(Component.translatable("gui.dungeonhelper.settings.custom_enchant_render_settings"), btn -> onCustomEnchantRenderSettingsPress())
+                .pos(getRegularX() + 5, getRegularY() + 5 + 20 + 2)
+                .size(137, 20)
+                .build());
 
-        this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5 + (20 + 2) * 2, 137, 20, Component.translatable("gui.dungeonhelper.settings.skill_cooltime_settings"), btn -> {
-            onSkillCooltimeSettingsPress();
-        }, mc.font));
+        this.addRenderableWidget(new Button.Builder(Component.translatable("gui.dungeonhelper.settings.skill_cooltime_settings"), btn -> onSkillCooltimeSettingsPress())
+                .pos(getRegularX() + 5, getRegularY() + 5 + (20 + 2) * 2)
+                .size(137, 20)
+                .build());
     }
 
 

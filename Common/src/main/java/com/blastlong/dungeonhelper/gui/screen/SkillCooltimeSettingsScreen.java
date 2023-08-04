@@ -52,9 +52,10 @@ public class SkillCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             );
 
-        toggleSkillCooltimeButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleSkillCooltimeButtonComponent, btn -> {
-            onToggleSkillCooltimePress();
-        }, mc.font));
+        toggleSkillCooltimeButton = this.addRenderableWidget(new Button.Builder(toggleSkillCooltimeButtonComponent, btn -> onToggleSkillCooltimePress())
+                .pos(getRegularX() + 5, getRegularY() + 5)
+                .size(137, 20)
+                .build());
 
         Component classTypeButtonComponent = Component.empty();
         if(client.data.classType == ClassCategory.ASSASSIN)
@@ -68,9 +69,10 @@ public class SkillCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior").withStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE).withBold(true))
                     );
 
-        classTypeButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 137, 20, classTypeButtonComponent, btn -> {
-            onClassTypePress();
-        }, mc.font));
+        classTypeButton = this.addRenderableWidget(new Button.Builder(classTypeButtonComponent, btn -> onClassTypePress())
+                .pos(getRegularX() + 5, getRegularY() + 5 + 20 + 2)
+                .size(137, 20)
+                .build());
     }
 
     public void render(PoseStack poseStack, int a, int b, float c) {

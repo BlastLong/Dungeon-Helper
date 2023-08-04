@@ -51,9 +51,10 @@ public class DungeonCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             );
 
-        toggleDungeonCooltimeButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleDungeonCooltimeButtonComponent, btn -> {
-            onToggleDungeonCooltimePress();
-        }, mc.font));
+        toggleDungeonCooltimeButton = this.addRenderableWidget(new Button.Builder(toggleDungeonCooltimeButtonComponent, btn -> onToggleDungeonCooltimePress())
+                .pos(getRegularX() + 5, getRegularY() + 5)
+                .size(137, 20)
+                .build());
 
         // Text
         Component toggleDungeonCooltimeTextButtonComponent;
@@ -66,9 +67,10 @@ public class DungeonCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.text").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             ;
 
-        toggleDungeonCooltimeOptionButtons[0] = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5 + 20 + 2, 67, 20, toggleDungeonCooltimeTextButtonComponent, btn -> {
-            onToggleDungeonCooltimeOptionPress(0);
-        }, mc.font));
+        toggleDungeonCooltimeOptionButtons[0] = this.addRenderableWidget(new Button.Builder(toggleDungeonCooltimeTextButtonComponent, btn -> onToggleDungeonCooltimeOptionPress(0))
+                .pos(getRegularX() + 5, getRegularY() + 5 + 20 + 2)
+                .size(67, 20)
+                .build());
 
         // Fade
         Component toggleDungeonCooltimeFadeButtonComponent;
@@ -81,9 +83,10 @@ public class DungeonCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.fade").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             ;
 
-        toggleDungeonCooltimeOptionButtons[1] = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5 + 67 + 2, getRegularY() + 5 + 20 + 2, 68, 20, toggleDungeonCooltimeFadeButtonComponent, btn -> {
-            onToggleDungeonCooltimeOptionPress(1);
-        }, mc.font));
+        toggleDungeonCooltimeOptionButtons[1] = this.addRenderableWidget(new Button.Builder(toggleDungeonCooltimeFadeButtonComponent, btn -> onToggleDungeonCooltimeOptionPress(1))
+                .pos(getRegularX() + 5 + 67 + 2, getRegularY() + 5 + 20 + 2)
+                .size(68, 20)
+                .build());
     }
 
     public void render(PoseStack poseStack, int a, int b, float c) {
@@ -139,12 +142,12 @@ public class DungeonCooltimeSettingsScreen extends Screen {
 
             if(client.data.toggleDungeonCooltimeFade) {
                 toggleDungeonCooltimeOptionButtons[1].setMessage(
-                        Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.main").withStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN).withBold(true))
+                        Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.fade").withStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN).withBold(true))
                 );
             }
             else {
                 toggleDungeonCooltimeOptionButtons[1].setMessage(
-                        Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.main").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
+                        Component.translatable("gui.dungeonhelper.dungeon_cooltime_settings.fade").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
                 );
             }
         }

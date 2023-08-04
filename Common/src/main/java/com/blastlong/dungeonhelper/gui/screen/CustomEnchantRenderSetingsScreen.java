@@ -49,9 +49,10 @@ public class CustomEnchantRenderSetingsScreen extends Screen {
                      Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
             );
 
-        toggleCustomEnchantRenderButton = this.addRenderableWidget(new PlainTextButton(getRegularX() + 5, getRegularY() + 5, 137, 20, toggleCustomEnchantRenderButtonComponent, btn -> {
-            onToggleCustomEnchantRenderPress();
-        }, mc.font));
+        toggleCustomEnchantRenderButton = this.addRenderableWidget(new Button.Builder(toggleCustomEnchantRenderButtonComponent, btn -> onToggleCustomEnchantRenderPress())
+                .pos(getRegularX() + 5, getRegularY() + 5)
+                .size(137, 20)
+                .build());
     }
 
     public void render(PoseStack poseStack, int a, int b, float c) {
