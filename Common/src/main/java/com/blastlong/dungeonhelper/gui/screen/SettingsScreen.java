@@ -1,8 +1,8 @@
 package com.blastlong.dungeonhelper.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.PlainTextButton;
 import net.minecraft.client.gui.screens.Screen;
@@ -47,18 +47,17 @@ public class SettingsScreen extends Screen {
     }
 
 
-    public void render(PoseStack poseStack, int a, int b, float c) {
+    public void render(GuiGraphics guiGraphics, int a, int b, float c) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
 
-        this.renderBackground(poseStack);
-        super.render(poseStack, a, b, c);
+        this.renderBackground(guiGraphics);
+        super.render(guiGraphics, a, b, c);
     }
 
-    public void renderBackground(PoseStack poseStack) {
-        super.renderBackground(poseStack);
+    public void renderBackground(GuiGraphics guiGraphics) {
+        super.renderBackground(guiGraphics);
 
-        RenderSystem.setShaderTexture(0, BACKGROUND_LOCATION);
-        blit(poseStack, getRegularX(), getRegularY(), 0, 0, width, height);
+        guiGraphics.blit(BACKGROUND_LOCATION, getRegularX(), getRegularY(), 0, 0, width, height);
     }
 
     private void onDungeonCooltimeSettingsPress() {

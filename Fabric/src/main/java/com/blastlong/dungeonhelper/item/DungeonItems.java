@@ -3,7 +3,6 @@ package com.blastlong.dungeonhelper.item;
 import com.blastlong.dungeonhelper.DungeonHelper;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.impl.itemgroup.MinecraftItemGroups;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

@@ -6,11 +6,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-public class DungeonCooltimeGui extends GuiComponent {
+public class DungeonCooltimeGui {
     private Minecraft mc;
     private DungeonHelperClient client;
     private Font font;
@@ -46,7 +46,7 @@ public class DungeonCooltimeGui extends GuiComponent {
         client = DungeonHelperClient.getInstance();
     }
 
-    public void renderTick(PoseStack poseStack, Component title, Timer timer) {
+    public void renderTick(GuiGraphics guiGraphics, Component title, Timer timer) {
         if(title != null) {
             try
             {
@@ -75,18 +75,19 @@ public class DungeonCooltimeGui extends GuiComponent {
         }
 
         if(client.data.toggleDungeonCooltime)
-            render(poseStack, seconds);
+            render(guiGraphics, seconds);
     }
 
-    private void render(PoseStack poseStack, int[] seconds) {
+    private void render(GuiGraphics guiGraphics, int[] seconds) {
         int x = 2, y = 2;
 
         for(int i = 0; i < DUNGEON_COUNT; i++) {
-            renderDungeonsAndCooltime(i, poseStack, x, y, seconds[i]);
+            renderDungeonsAndCooltime(i, guiGraphics, x, y, seconds[i]);
         }
     }
 
-    private void renderDungeonsAndCooltime(int id, PoseStack poseStack, int x, int y, int second) {
+    private void renderDungeonsAndCooltime(int id, GuiGraphics guiGraphics, int x, int y, int second) {
+        PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
         poseStack.translate(x, y + (16 + 2) * id, 0);
         poseStack.scale(16f/256f, 16f/256f, 16f/256f);
@@ -95,14 +96,12 @@ public class DungeonCooltimeGui extends GuiComponent {
         if((texture = getDungeonTexture(id)) == null)
             return;
 
-        RenderSystem.setShaderTexture(0, texture);
-        blit(poseStack, 0, 0, 0, 0, 256, 256);
+        guiGraphics.blit(texture, 0, 0, 0, 0, 256, 256);
 
         if(client.data.toggleDungeonCooltimeFade) {
             RenderSystem.enableBlend();
             RenderSystem.defaultBlendFunc();
-            RenderSystem.setShaderTexture(0, BLACK_ICON);
-            blit(poseStack, 0, 0, 0, 0, 256, (int)(256 * (float)second / 3600f));
+            guiGraphics.blit(BLACK_ICON, 0, 0, 0, 0, 256, (int)(256 * (float)second / 3600f));
         }
 
         poseStack.scale(256f/16f, 256f/16f, 256f/16f);
@@ -119,7 +118,7 @@ public class DungeonCooltimeGui extends GuiComponent {
             poseStack.translate(x + 16 + 2, y + 4 + (16 + 2) * id, 0);
             poseStack.scale(1f/1.1f, 1f/1.1f, 1f/1.1f);
 
-            drawString(poseStack, font, Component.literal(String.format("%d:%d", minute, second)), 0, 0, 0xFFFFFF);
+            guiGraphics.drawString(font, Component.literal(String.format("%d:%d", minute, second)), 0, 0, 0xFFFFFF);
 
             poseStack.scale(1.1f, 1.1f, 1.1f);
             poseStack.popPose();

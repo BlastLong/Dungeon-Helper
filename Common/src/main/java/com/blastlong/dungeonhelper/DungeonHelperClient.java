@@ -8,8 +8,8 @@ import com.blastlong.dungeonhelper.gui.screen.SettingsScreen;
 import com.blastlong.dungeonhelper.input.IKeyMappings;
 import com.blastlong.dungeonhelper.sound.ISoundManager;
 import com.blastlong.dungeonhelper.util.Timer;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 public class DungeonHelperClient {
@@ -53,9 +53,9 @@ public class DungeonHelperClient {
 
     }
 
-    public void renderEvent(PoseStack poseStack, Component title, Component message) {
-        dungeonCooltimeGui.renderTick(poseStack, title, timer);
-        skillCooltimeGui.renderTick(poseStack, timer);
+    public void renderEvent(GuiGraphics guiGraphics, Component title, Component message) {
+        dungeonCooltimeGui.renderTick(guiGraphics, title, timer);
+        skillCooltimeGui.renderTick(guiGraphics, timer);
 
         timer.updateTime();
     }

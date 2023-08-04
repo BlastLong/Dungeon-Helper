@@ -1,8 +1,8 @@
 package com.blastlong.dungeonhelper.mixin;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -19,8 +19,8 @@ public class GuiMixin {
     @Shadow
     private Component overlayMessageString;
 
-    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;F)V", at = {@At("RETURN")}, cancellable = false)
-    private void renderMixin(PoseStack poseStack, float tickDelta, CallbackInfo info) {
-        DungeonHelperClient.getInstance().renderEvent(poseStack, title, overlayMessageString);
+    @Inject(method = "render(Lnet/minecraft/client/gui/GuiGraphics;F)V", at = {@At("RETURN")}, cancellable = false)
+    private void renderMixin(GuiGraphics guiGraphics, float tickDelta, CallbackInfo info) {
+        DungeonHelperClient.getInstance().renderEvent(guiGraphics, title, overlayMessageString);
     }
 }

@@ -38,6 +38,6 @@ public class SoundManager implements ISoundManager {
         }
 
         assert mc.player != null;
-        mc.player.getLevel().playSound(mc.player, mc.player.getX(), mc.player.getY(), mc.player.getZ(), sound.get(), SoundSource.PLAYERS, volume, 1f);
+        mc.player.level().playSound(mc.player, mc.player.getX(), mc.player.getY(), mc.player.getZ(), sound.get(), SoundSource.PLAYERS, volume, 1f);
     }
 }

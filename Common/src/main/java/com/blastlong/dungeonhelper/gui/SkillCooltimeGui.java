@@ -6,11 +6,11 @@ import com.blastlong.dungeonhelper.util.Timer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-public class SkillCooltimeGui extends GuiComponent {
+public class SkillCooltimeGui {
 
     private Minecraft mc;
     private DungeonHelperClient client;
@@ -48,7 +48,7 @@ public class SkillCooltimeGui extends GuiComponent {
         lastUltimateTime = timer.getCurrentTime();
     }
 
-    public void renderTick(PoseStack poseStack, Timer timer) {
+    public void renderTick(GuiGraphics guiGraphics, Timer timer) {
         if(!client.data.toggleSkillCooltime)
             return;
 
@@ -64,37 +64,38 @@ public class SkillCooltimeGui extends GuiComponent {
         leftDashTime = Math.max(leftDashTime, 0);
         leftUltimateTime = Math.max(leftUltimateTime, 0);
 
-        render(poseStack);
+        render(guiGraphics);
     }
 
-    private void render(PoseStack poseStack) {
+    private void render(GuiGraphics guiGraphics) {
         int xOffset = 98;
-        renderSkillTexture(poseStack, xOffset);
-        renderSkillCooltime(poseStack, xOffset);
+        renderSkillTexture(guiGraphics, xOffset);
+        renderSkillCooltime(guiGraphics, xOffset);
     }
 
-    private void renderSkillTexture(PoseStack poseStack, int xOffset) {
+    private void renderSkillTexture(GuiGraphics guiGraphics, int xOffset) {
         int screenWidth = mc.getWindow().getGuiScaledWidth();
         int screenHeight = mc.getWindow().getGuiScaledHeight();
 
         RenderSystem.setShaderTexture(0, WIDGETS);
-        blit(poseStack, screenWidth / 2 + xOffset, screenHeight - 22, 24, 23, 22, 22);
-        blit(poseStack, screenWidth / 2 + xOffset + 22 + 2, screenHeight - 22, 24, 23, 22, 22);
+        guiGraphics.blit(WIDGETS, screenWidth / 2 + xOffset, screenHeight - 22, 24, 23, 22, 22);
+        guiGraphics.blit(WIDGETS, screenWidth / 2 + xOffset + 22 + 2, screenHeight - 22, 24, 23, 22, 22);
+
+        ResourceLocation texture = null;
+        if(client.data.classType == ClassCategory.ASSASSIN)
+            texture = BLADE_DASH_TEXTURE;
+        else if(client.data.classType == ClassCategory.DRAGON_WARRIOR)
+            texture = DRAGON_DASH_TEXTURE;
+        drawSkillTexture(guiGraphics, texture, screenWidth / 2 + xOffset + 3, screenHeight - 22 + 3);
 
         if(client.data.classType == ClassCategory.ASSASSIN)
-            RenderSystem.setShaderTexture(0, BLADE_DASH_TEXTURE);
+            texture = BLADE_DANCE_TEXTURE;
         else if(client.data.classType == ClassCategory.DRAGON_WARRIOR)
-            RenderSystem.setShaderTexture(0, DRAGON_DASH_TEXTURE);
-        drawSkillTexture(poseStack, screenWidth / 2 + xOffset + 3, screenHeight - 22 + 3);
-
-        if(client.data.classType == ClassCategory.ASSASSIN)
-            RenderSystem.setShaderTexture(0, BLADE_DANCE_TEXTURE);
-        else if(client.data.classType == ClassCategory.DRAGON_WARRIOR)
-            RenderSystem.setShaderTexture(0, DRAGON_SMASH_TEXTURE);
-        drawSkillTexture(poseStack, screenWidth / 2 + xOffset + 22 + 2 + 3, screenHeight - 22 + 3);
+            texture = DRAGON_SMASH_TEXTURE;
+        drawSkillTexture(guiGraphics, texture,screenWidth / 2 + xOffset + 22 + 2 + 3, screenHeight - 22 + 3);
     }
 
-    private void renderSkillCooltime(PoseStack poseStack, int xOffset) {
+    private void renderSkillCooltime(GuiGraphics guiGraphics, int xOffset) {
         int screenWidth = mc.getWindow().getGuiScaledWidth();
         int screenHeight = mc.getWindow().getGuiScaledHeight();
 
@@ -114,15 +115,16 @@ public class SkillCooltimeGui extends GuiComponent {
             dashCooltime = DRAGON_DASH_COOLTIME;
             ultimateCooltime = DRAGON_SMASH_COOLTIME;
         }
-        blit(poseStack, x, y + (int) (SKILL_GUI_SIZE * (1 - leftDashTime / dashCooltime)), 0, 0, SKILL_GUI_SIZE, (int) (SKILL_GUI_SIZE * (leftDashTime / dashCooltime)));
-        blit(poseStack, x + 22 + 2, y + (int) (SKILL_GUI_SIZE * (1 - leftUltimateTime / ultimateCooltime)), 0, 0, SKILL_GUI_SIZE, (int) (SKILL_GUI_SIZE * (leftUltimateTime / ultimateCooltime)));
+        guiGraphics.blit(BLACK_ICON, x, y + (int) (SKILL_GUI_SIZE * (1 - leftDashTime / dashCooltime)), 0, 0, SKILL_GUI_SIZE, (int) (SKILL_GUI_SIZE * (leftDashTime / dashCooltime)));
+        guiGraphics.blit(BLACK_ICON, x + 22 + 2, y + (int) (SKILL_GUI_SIZE * (1 - leftUltimateTime / ultimateCooltime)), 0, 0, SKILL_GUI_SIZE, (int) (SKILL_GUI_SIZE * (leftUltimateTime / ultimateCooltime)));
 
+        PoseStack poseStack = guiGraphics.pose();
         if(isDashCooltime()) {
             poseStack.pushPose();
             poseStack.translate(x + 8, y + 4, 0);
             poseStack.scale(1f/1.1f, 1f/1.1f, 1f/1.1f);
 
-            drawCenteredString(poseStack, mc.font, Component.literal(String.valueOf((int)(leftDashTime * 10) / 10f)), 0, 0, 0xFFFFFF);
+            guiGraphics.drawCenteredString(mc.font, Component.literal(String.valueOf((int)(leftDashTime * 10) / 10f)), 0, 0, 0xFFFFFF);
 
             poseStack.popPose();
         }
@@ -132,20 +134,21 @@ public class SkillCooltimeGui extends GuiComponent {
             poseStack.translate(x + 2 + 22 + 8, y + 4, 0);
             poseStack.scale(1f/1.1f, 1f/1.1f, 1f/1.1f);
 
-            drawCenteredString(poseStack, mc.font, Component.literal(String.valueOf((int) leftUltimateTime)), 0, 0, 0xFFFFFF);
+            guiGraphics.drawCenteredString(mc.font, Component.literal(String.valueOf((int) leftUltimateTime)), 0, 0, 0xFFFFFF);
 
             poseStack.popPose();
         }
     }
 
-    private void drawSkillTexture(PoseStack poseStack, int x, int y) {
+    private void drawSkillTexture(GuiGraphics guiGraphics, ResourceLocation texture, int x, int y) {
         float scaleRatio = SKILL_GUI_SIZE / 256f;
 
+        PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
         poseStack.translate(x, y, 0);
         poseStack.scale(scaleRatio, scaleRatio, 1);
 
-        blit(poseStack, 0, 0, 0, 0, 256, 256);
+        guiGraphics.blit(texture, 0, 0, 0, 0, 256, 256);
 
         poseStack.popPose();
     }

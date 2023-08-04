@@ -3,9 +3,9 @@ package com.blastlong.dungeonhelper.gui.screen;
 import com.blastlong.dungeonhelper.DungeonHelperClient;
 import com.blastlong.dungeonhelper.util.ClassCategory;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.PlainTextButton;
 import net.minecraft.client.gui.screens.Screen;
@@ -75,18 +75,17 @@ public class SkillCooltimeSettingsScreen extends Screen {
                 .build());
     }
 
-    public void render(PoseStack poseStack, int a, int b, float c) {
+    public void render(GuiGraphics guiGraphics, int a, int b, float c) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
 
-        this.renderBackground(poseStack);
-        super.render(poseStack, a, b, c);
+        this.renderBackground(guiGraphics);
+        super.render(guiGraphics, a, b, c);
     }
 
-    public void renderBackground(PoseStack poseStack) {
-        super.renderBackground(poseStack);
+    public void renderBackground(GuiGraphics guiGraphics) {
+        super.renderBackground(guiGraphics);
 
-        RenderSystem.setShaderTexture(0, BG_LOCATION);
-        blit(poseStack, getRegularX(), getRegularY(), 0, 0, width, height);
+        guiGraphics.blit(BG_LOCATION, getRegularX(), getRegularY(), 0, 0, width, height);
     }
 
     private void onToggleSkillCooltimePress() {
