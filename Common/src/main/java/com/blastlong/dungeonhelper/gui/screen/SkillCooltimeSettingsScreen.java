@@ -23,8 +23,13 @@ public class SkillCooltimeSettingsScreen extends Screen {
 
     private Button toggleSkillCooltimeButton;
     private Button classTypeButton;
+    private Button debugModeButton;
+
 
     private int width, height;
+
+    public static boolean ENABLE_DEBUG_MODE = true;
+    public static boolean DEBUG_MODE = false;
 
     public SkillCooltimeSettingsScreen() {
         super(Component.literal("SkillCooltimeSettingScreen"));
@@ -79,6 +84,24 @@ public class SkillCooltimeSettingsScreen extends Screen {
                 .pos(getRegularX() + 5, getRegularY() + 5 + 20 + 2)
                 .size(137, 20)
                 .build());
+
+        if(ENABLE_DEBUG_MODE) {
+            Component debugModeButtonComponent;
+            if(DEBUG_MODE)
+                debugModeButtonComponent =
+                        Component.literal("DEBUG MODE").append(
+                                Component.translatable("gui.dungeonhelper.settings.on").withStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN).withBold(true))
+                        );
+            else
+                debugModeButtonComponent =
+                        Component.literal("DEBUG MODE").append(
+                                Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
+                        );
+            debugModeButton = this.addRenderableWidget(new Button.Builder(debugModeButtonComponent, btn -> onDebugModePress())
+                    .pos(getRegularX() + 5, getRegularY() + 5 + 20 + 2 + 20 + 2)
+                    .size(137, 20)
+                    .build());
+        }
     }
 
     public void render(GuiGraphics guiGraphics, int a, int b, float c) {
@@ -141,6 +164,23 @@ public class SkillCooltimeSettingsScreen extends Screen {
         }
 
         client.settings.save();
+    }
+
+    private void onDebugModePress() {
+        DEBUG_MODE = !DEBUG_MODE;
+
+        if(DEBUG_MODE) {
+            debugModeButton.setMessage(
+                    Component.literal("DEBUG MODE").append(
+                            Component.translatable("gui.dungeonhelper.settings.on").withStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN).withBold(true))
+                    ));
+        }
+        else {
+            debugModeButton.setMessage(
+                    Component.literal("DEBUG MODE").append(
+                            Component.translatable("gui.dungeonhelper.settings.off").withStyle(Style.EMPTY.applyFormat(ChatFormatting.RED).withBold(true))
+                    ));
+        }
     }
 
     int getRegularX() {

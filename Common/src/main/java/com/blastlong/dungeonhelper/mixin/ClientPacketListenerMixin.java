@@ -56,10 +56,10 @@ public abstract class ClientPacketListenerMixin {
                         int id = tag.getInt("CustomModelData");
                         double distance = armorStand.position().distanceToSqr(mc.player.position());
 
-                        /*
-                        mc.player.displayClientMessage(Component.literal(tag.toString()), false);
-                        mc.player.displayClientMessage(Component.literal(String.valueOf(distance)), false);
-                        */
+                        if(SkillCooltimeSettingsScreen.DEBUG_MODE) {
+                            mc.player.displayClientMessage(Component.literal(tag.toString()), false);
+                            mc.player.displayClientMessage(Component.literal(String.valueOf(distance)), false);
+                        }
 
                         if(client.data.classType == ClassCategory.ASSASSIN) {
                             if(id == 2109 && distance < VALID_BLADE_DASH_DISTANCE)
