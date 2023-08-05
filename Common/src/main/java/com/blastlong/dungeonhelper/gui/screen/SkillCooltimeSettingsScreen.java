@@ -68,6 +68,12 @@ public class SkillCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType").append(
                     Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior").withStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE).withBold(true))
                     );
+        else if(client.data.classType == ClassCategory.MARTIAL_ARTIST)
+            classTypeButtonComponent =
+                    Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType").append(
+                            Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType.martial_artist").withStyle(Style.EMPTY.applyFormat(ChatFormatting.AQUA).withBold(true))
+                    );
+
 
         classTypeButton = this.addRenderableWidget(new Button.Builder(classTypeButtonComponent, btn -> onClassTypePress())
                 .pos(getRegularX() + 5, getRegularY() + 5 + 20 + 2)
@@ -111,6 +117,8 @@ public class SkillCooltimeSettingsScreen extends Screen {
         if(client.data.classType == ClassCategory.ASSASSIN)
             client.data.classType = ClassCategory.DRAGON_WARRIOR;
         else if(client.data.classType == ClassCategory.DRAGON_WARRIOR)
+            client.data.classType = ClassCategory.MARTIAL_ARTIST;
+        else if(client.data.classType == ClassCategory.MARTIAL_ARTIST)
             client.data.classType = ClassCategory.ASSASSIN;
 
         if(client.data.classType == ClassCategory.ASSASSIN) {
@@ -119,10 +127,16 @@ public class SkillCooltimeSettingsScreen extends Screen {
                     Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType.assassin").withStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_RED).withBold(true))
                     ));
         }
-        else {
+        else if(client.data.classType == ClassCategory.DRAGON_WARRIOR) {
             classTypeButton.setMessage(
                     Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType").append(
                     Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior").withStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE).withBold(true))
+                    ));
+        }
+        else if(client.data.classType == ClassCategory.MARTIAL_ARTIST) {
+            classTypeButton.setMessage(
+                    Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType").append(
+                            Component.translatable("gui.dungeonhelper.skill_cooltime_settings.classType.martial_artist").withStyle(Style.EMPTY.applyFormat(ChatFormatting.AQUA).withBold(true))
                     ));
         }
 

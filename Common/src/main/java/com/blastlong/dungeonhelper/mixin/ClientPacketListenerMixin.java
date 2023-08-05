@@ -1,6 +1,8 @@
 package com.blastlong.dungeonhelper.mixin;
 
 import com.blastlong.dungeonhelper.DungeonHelperClient;
+import com.blastlong.dungeonhelper.gui.SkillCooltimeGui;
+import com.blastlong.dungeonhelper.gui.screen.SkillCooltimeSettingsScreen;
 import com.blastlong.dungeonhelper.util.ClassCategory;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.Minecraft;
@@ -28,6 +30,8 @@ public abstract class ClientPacketListenerMixin {
     private static final int VALID_BLADE_DANCE_DISTANCE = 5;
     private static final int VALID_DRAGON_DASH_DISTANCE = 5;
     private static final int VALID_DRAGON_SMASH_DISTANCE = 5;
+    private static final int VALID_AGILE_STRIKE_DISTANCE = 30;
+    private static final int VALID_MULTIPLE_BLOW_DISTANCE = 5;
 
     @Shadow
     private ClientLevel level;
@@ -69,8 +73,16 @@ public abstract class ClientPacketListenerMixin {
                             else if(id == 2334 && distance < VALID_DRAGON_SMASH_DISTANCE)
                                 client.updateLastUltimateTime();
                         }
+                        else if (client.data.classType == ClassCategory.MARTIAL_ARTIST) {
+                            if(id == 2395 && distance < VALID_AGILE_STRIKE_DISTANCE)
+                                client.updateLastDashTime();
+                            else if(id == 2334 && distance < VALID_MULTIPLE_BLOW_DISTANCE)
+                                client.updateLastUltimateTime();
+                        }
+
                         // else 2329 - dragon piercing
                         // else 2109 - assassin_dash_1
+                        // else 2395 - blue_strike_1
                     }
                 }
             }

@@ -25,5 +25,6 @@
   "gui.dungeonhelper.skill_cooltime_settings.main": "스킬 쿨타임 표시 : ",
   "gui.dungeonhelper.skill_cooltime_settings.classType": "클래스 : ",
   "gui.dungeonhelper.skill_cooltime_settings.classType.assassin": "어쌔신",
-  "gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior": "드래곤 워리어"
+  "gui.dungeonhelper.skill_cooltime_settings.classType.dragon_warrior": "드래곤 워리어",
+  "gui.dungeonhelper.skill_cooltime_settings.classType.martial_artist": "무투가"
 }

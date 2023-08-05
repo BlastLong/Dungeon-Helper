@@ -21,6 +21,8 @@ public class SkillCooltimeGui {
     private static final ResourceLocation DRAGON_SMASH_TEXTURE = new ResourceLocation("dungeonhelper", "textures/icon/skill/dragon_smash.png");
     private static final ResourceLocation BLADE_DASH_TEXTURE = new ResourceLocation("dungeonhelper", "textures/icon/skill/blade_dash.png");
     private static final ResourceLocation BLADE_DANCE_TEXTURE = new ResourceLocation("dungeonhelper", "textures/icon/skill/blade_dance.png");
+    private static final ResourceLocation AGILE_STRIKE_TEXTURE = new ResourceLocation("dungeonhelper", "textures/icon/skill/agile_strike.png");
+    private static final ResourceLocation MULTIPLE_BLOW_TEXTURE = new ResourceLocation("dungeonhelper", "textures/icon/skill/multiple_blow.png");
 
     private static final int SKILL_GUI_SIZE = 16;
 
@@ -28,6 +30,8 @@ public class SkillCooltimeGui {
     private static final float BLADE_DANCE_COOLTIME = 30f;
     private static final int DRAGON_DASH_COOLTIME = 4;
     private static final float DRAGON_SMASH_COOLTIME = 27.5f;
+    private static final int AGILE_STRIKE_COOLTIME = 2;
+    private static final float MULTIPLE_BLOW_COOLTIME = 30f;
 
     private long lastDashTime = 0;
     private long lastUltimateTime = 0;
@@ -60,6 +64,10 @@ public class SkillCooltimeGui {
             leftDashTime = DRAGON_DASH_COOLTIME - timer.getDifference(lastDashTime);
             leftUltimateTime = DRAGON_SMASH_COOLTIME - timer.getDifference(lastUltimateTime);
         }
+        else if(client.data.classType == ClassCategory.MARTIAL_ARTIST) {
+            leftDashTime = AGILE_STRIKE_COOLTIME - timer.getDifference(lastDashTime);
+            leftUltimateTime = MULTIPLE_BLOW_COOLTIME - timer.getDifference(lastUltimateTime);
+        }
 
         leftDashTime = Math.max(leftDashTime, 0);
         leftUltimateTime = Math.max(leftUltimateTime, 0);
@@ -77,7 +85,6 @@ public class SkillCooltimeGui {
         int screenWidth = mc.getWindow().getGuiScaledWidth();
         int screenHeight = mc.getWindow().getGuiScaledHeight();
 
-        RenderSystem.setShaderTexture(0, WIDGETS);
         guiGraphics.blit(WIDGETS, screenWidth / 2 + xOffset, screenHeight - 22, 24, 23, 22, 22);
         guiGraphics.blit(WIDGETS, screenWidth / 2 + xOffset + 22 + 2, screenHeight - 22, 24, 23, 22, 22);
 
@@ -86,12 +93,16 @@ public class SkillCooltimeGui {
             texture = BLADE_DASH_TEXTURE;
         else if(client.data.classType == ClassCategory.DRAGON_WARRIOR)
             texture = DRAGON_DASH_TEXTURE;
+        else if(client.data.classType == ClassCategory.MARTIAL_ARTIST)
+            texture = AGILE_STRIKE_TEXTURE;
         drawSkillTexture(guiGraphics, texture, screenWidth / 2 + xOffset + 3, screenHeight - 22 + 3);
 
         if(client.data.classType == ClassCategory.ASSASSIN)
             texture = BLADE_DANCE_TEXTURE;
         else if(client.data.classType == ClassCategory.DRAGON_WARRIOR)
             texture = DRAGON_SMASH_TEXTURE;
+        else if(client.data.classType == ClassCategory.MARTIAL_ARTIST)
+            texture = MULTIPLE_BLOW_TEXTURE;
         drawSkillTexture(guiGraphics, texture,screenWidth / 2 + xOffset + 22 + 2 + 3, screenHeight - 22 + 3);
     }
 
@@ -104,7 +115,7 @@ public class SkillCooltimeGui {
 
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        RenderSystem.setShaderTexture(0, BLACK_ICON);
+        // RenderSystem.setShaderTexture(0, BLACK_ICON);
 
         float dashCooltime = 10, ultimateCooltime = 10;
         if(client.data.classType == ClassCategory.ASSASSIN) {
@@ -114,6 +125,10 @@ public class SkillCooltimeGui {
         else if(client.data.classType == ClassCategory.DRAGON_WARRIOR) {
             dashCooltime = DRAGON_DASH_COOLTIME;
             ultimateCooltime = DRAGON_SMASH_COOLTIME;
+        }
+        else if(client.data.classType == ClassCategory.MARTIAL_ARTIST) {
+            dashCooltime = AGILE_STRIKE_COOLTIME;
+            ultimateCooltime = MULTIPLE_BLOW_COOLTIME;
         }
         guiGraphics.blit(BLACK_ICON, x, y + (int) (SKILL_GUI_SIZE * (1 - leftDashTime / dashCooltime)), 0, 0, SKILL_GUI_SIZE, (int) (SKILL_GUI_SIZE * (leftDashTime / dashCooltime)));
         guiGraphics.blit(BLACK_ICON, x + 22 + 2, y + (int) (SKILL_GUI_SIZE * (1 - leftUltimateTime / ultimateCooltime)), 0, 0, SKILL_GUI_SIZE, (int) (SKILL_GUI_SIZE * (leftUltimateTime / ultimateCooltime)));

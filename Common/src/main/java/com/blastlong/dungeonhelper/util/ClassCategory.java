@@ -1,5 +1,5 @@
 package com.blastlong.dungeonhelper.util;
 
 public enum ClassCategory {
-    ASSASSIN, DRAGON_WARRIOR
+    ASSASSIN, DRAGON_WARRIOR, MARTIAL_ARTIST
 }
